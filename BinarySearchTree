@@ -1,1 +1,87 @@
 
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    static Node head=null;
+    public static class Node
+    {
+        int data;
+        Node left;
+        Node right;
+        Node(int d)
+        {
+            data=d;
+            right=null;
+            left=null;
+        }
+    }
+        public static void Buildtree(int x)
+        {
+            Node hm=new Node(x);
+            Node h;
+            if(head==null)
+            head=hm;
+            else
+            { h=head;
+                while(true)
+                {
+                   
+                    if(hm.data>h.data)
+                    {
+                        if(h.right==null)
+                        {
+                            h.right=hm;
+                            break;
+                        }
+                        else
+                        {
+                            h=h.right;
+                        }
+                    }
+                    else
+                    {
+                        if(h.left==null)
+                        {
+                            h.left=hm;
+                            break;
+                        }
+                        else
+                        {
+                            h=h.left;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    
+    
+    public static void inorder(Node r)
+    {
+       if(r!=null)
+       {
+           inorder(r.left);
+           System.out.println(r.data);
+           inorder(r.right);
+       }
+        
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int test=sc.nextInt();
+		while(test-->0)
+	    {
+		   int x=sc.nextInt();
+		   Buildtree(x);
+		
+	    }
+	   inorder(head);
+}
+}
