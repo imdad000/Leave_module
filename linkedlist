@@ -1,1 +1,84 @@
 
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    static Node head=null;
+    public static class Node
+    {
+    int data;
+    Node right;
+        Node(int x)
+        {
+            data=x;
+            right=null;
+        }
+    }
+    
+    
+        public static void createlinklist(int x)
+        {
+            Node hm=new Node(x);
+            if(head==null)
+            head=hm;
+            else
+            {
+                Node trans=head;
+                while(trans.right!=null)
+                {
+                    trans=trans.right;
+                    
+                }
+                trans.right=hm;
+               
+            }
+        }
+        
+        
+        public static void reverse(Node h)
+        {
+            Node prev=null;
+            Node next=null;
+            h=head;
+            while(h!=null)
+            {
+                next=h.right;
+                h.right=prev;
+                prev=h;
+                h=next;
+            }
+            head=prev;
+        }
+        
+        
+    public static void print(Node r)
+    {
+        r=head;
+        while(r!=null)
+        {
+            System.out.print(r.data+" ");
+            r=r.right;
+        }
+    }
+    
+    
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int test=sc.nextInt();
+	    	while(test-->0)
+		    {
+		        int x=sc.nextInt();
+		        createlinklist(x);
+	    	}
+		print(head);
+		reverse(head);
+		print(head);
+	}
+}
