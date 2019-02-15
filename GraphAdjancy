@@ -1,1 +1,78 @@
 
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+
+class GfG
+{
+   public static class Graph{
+       LinkedList<Integer>  garr[];
+       int v;
+       Graph(int x)
+       {
+           v=x;
+           garr=new LinkedList[v];
+           for(int i=0;i<v;i++)
+           {
+               garr[i]=new LinkedList<Integer>();
+           }
+           
+       }
+   }
+   
+   
+   public static void edgeadd(Graph graph,int src,int des)
+   {
+       graph.garr[src].add(des);
+       graph.garr[des].add(src);
+       
+   }
+   
+   
+   public static void print(Graph graph)
+   {
+       for(int i=0;i<graph.v;i++)
+       {
+           int count=0;
+           int l1=1;
+               
+           for(Integer l :graph.garr[i])
+           {
+               
+               if(count==0)
+               {
+               System.out.print(i+"->");    
+               count++;
+               }
+               if(graph.garr[i].size()==l1)
+               System.out.print(l);
+               else
+               System.out.print(l+"->");
+               l1++;
+           }
+           System.out.println();
+       }
+   }
+   
+   
+public static void main (String[] args) throws java.lang.Exception
+{
+Scanner sc=new Scanner(System.in);
+int test=sc.nextInt();
+while(test-->0)
+{
+   int node=sc.nextInt();
+   int edge=sc.nextInt();
+   Graph graph=new Graph(node);
+   while(edge-->0)
+   {
+       int src=sc.nextInt();
+       int des=sc.nextInt();
+       edgeadd(graph,src,des);
+   }
+   print(graph);
+}
+}
+}
