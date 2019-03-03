@@ -12,10 +12,10 @@ while test>0:
     
     
     
-    right  = numpy.zeros(shape=(rows,cols))
-    left   = numpy.zeros(shape=(rows,cols))
-    up     =  numpy.zeros(shape=(rows,cols))
-    down   = numpy.zeros(shape=(rows,cols))
+    right  = numpy.zeros(shape=(rows,cols),dtype=numpy.int)
+    left   = numpy.zeros(shape=(rows,cols),dtype=numpy.int)
+    up     =  numpy.zeros(shape=(rows,cols),dtype=numpy.int)
+    down   = numpy.zeros(shape=(rows,cols),dtype=numpy.int)
     max1=0
     
     for i in range(0,rows):
