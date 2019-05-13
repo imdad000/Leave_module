@@ -1,0 +1,39 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc=new Scanner(System.in);
+		int test=sc.nextInt();
+		while(test-->0)
+		{
+		    int n=sc.nextInt();;
+		    //int arr[][]=new arr[n][n];
+		    int count=0,odd=0;
+		    for(int i=0;i<n;i++)
+		    {
+		        
+		            for(int j=0;j<n;j++)
+		            {
+		                int r=sc.nextInt();;
+		                if(r==1)
+		                count++;
+		            }
+		        if(count%2!=0)
+		         odd++;
+		      count=0;
+		    }
+		    if(odd==2)
+		    System.out.println("1");
+		    else
+		    {
+		     System.out.println("0");   
+		    }
+		}
+		
+	}
+}
