@@ -1,0 +1,70 @@
+import java.io.*; 
+import java.util.*; 
+  
+class TestClass {
+    
+    static class Graph
+    {
+        int v;
+        LinkedList<Integer>[] adj; 
+        
+        Graph(int v)
+        {
+            this.v=v;
+            adj=new LinkedList[v];
+            
+            for(int i=0;i<adj.length;i++)
+            {
+                adj[i]=new LinkedList<Integer>();
+                
+            }
+        }
+        
+        void add_edge(int u,int v)
+        {
+            adj[u].add(v);
+        }
+    }
+    
+    public static void main(String args[] ) throws Exception {
+        Scanner sc=new Scanner(System.in);
+        int node=sc.nextInt();
+        Graph g= new Graph(node);
+        
+        for(int i=0;i<node-1;i++)
+        {
+            int u=sc.nextInt();
+            int v=sc.nextInt();
+            g.add_edge(u,v);
+        }
+       int query=sc.nextInt();
+       int arr[]=new int[node+1];
+       
+       while(query-->0)
+       {
+           int t=sc.nextInt();
+           arr[t]=1;
+       }
+       
+       boolean visited[]=new boolean[node];
+       LinkedList<Integer> queue=new LinkedList<Integer>();
+       visited[1]=true;
+       queue.add(1);
+       while(queue.size()!=0)
+       {
+           int s=queue.poll();
+           Iterator<Integer> i = g.adj[s].iterator(); 
+           while(i.hasNext())
+           {
+               int n=i.next();
+               if(arr[n]==1)
+               {
+                   System.out.println(n);
+                   break;
+               }
+               
+           }
+       }
+
+    }
+}
