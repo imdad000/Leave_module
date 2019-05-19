@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+import java.lang.*; 
+class TestClass {
+   public static void main(String args[] ) throws Exception {
+       Scanner sc=new Scanner(System.in);
+       int test=sc.nextInt();
+       while(test-->0)
+       {
+           int n=sc.nextInt();
+           String line=sc.next();
+           String line1=sc.next();
+           int count = 0;
+           int value=0;
+           HashMap<Character,Integer> map = new HashMap<Character,Integer>();
+           HashMap<Character,Integer> map1 = new HashMap<Character,Integer>();
+           
+           for (int i=0; i<line.length(); i++){
+           if(map.containsKey(line.charAt(i))){
+               value = map.get(line.charAt(i));
+               value ++;
+               map.put(line.charAt(i),value);
+           }else{
+               map.put(line.charAt(i),1);
+           }
+       }
+
+
+       for (int i=0; i<line1.length(); i++){
+           if(map1.containsKey(line1.charAt(i))){
+               value = map1.get(line1.charAt(i));
+               value ++;
+               map1.put(line1.charAt(i),value);
+           }else{
+               map1.put(line1.charAt(i),1);
+           }
+       }
+   
+       
+       
+       for ( Character key : map.keySet()){
+          if(map1.containsKey(key))
+          {
+              int v1=map.get(key);
+              int v2=map1.get(key);
+              if(v1>v2)
+              count=count+v2;
+              else
+              count=count+v1;
+          }
+          
+       }
+   System.out.println(count);
+
+            
+       }
+
+   }
+}
