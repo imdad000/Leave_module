@@ -1,0 +1,40 @@
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+//import for Scanner and other utility classes
+import java.util.*;
+
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+    
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    long arr[][]=new long [n][2];
+    for(int i=0;i<n;i++)
+      {
+              long t1=sc.nextLong();
+              long t2=sc.nextLong();
+              arr[i][0]=t1;
+              arr[i][1]=t2;
+      }
+      long sum=0;
+      long add=0;
+        for(int i=n-1;i>=0;i--)
+        {
+           long new_value=add+arr[i][0];
+           if(new_value%arr[i][1]!=0)
+           {
+               long r=new_value/(arr[i][1]);
+               r=r+1;
+               add=add+(r*arr[i][1]-new_value);
+               sum=sum+(r*arr[i][1]-new_value);
+           }
+           
+        }
+        System.out.println(sum);
+    }
+}
