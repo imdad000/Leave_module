@@ -1,0 +1,40 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int test=sc.nextInt();
+		while(test-->0)
+		{
+		    int n=sc.nextInt();
+		    int arr []=new int [n];
+		    for(int i=0;i<n;i++)
+		    {
+		        arr[i]=sc.nextInt();
+		    }
+		   int excl=0;
+		   int incl=arr[0];
+		   int t=0;
+		   for(int i=1;i<n;i++)
+		   {
+		       excl=excl+arr[i];
+		       t=incl;
+		       if(excl>incl)
+		       {
+		           incl=excl;
+		           
+		       }
+		       excl=t;
+		   }
+		  System.out.println(incl);  
+		}
+	}
+}
