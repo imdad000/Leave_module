@@ -36,6 +36,180 @@ class TestClass {
            }
        }
    
+   
+   
+   
+   //package nov19;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.*;
+
+class COOK112B {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		FastReader scn = new FastReader();
+		PrintWriter out = new PrintWriter(System.out);
+		int t = scn.nextInt();
+		for (int t1 = 0; t1 < t; t1++) {
+			int n=scn.nextInt();
+			int m=scn.nextInt();
+			char [][] grid1=new char[n][m];
+			char [][] grid2=new char[n][m];
+			int[][] grid3=new int[n][m];
+			int[][] grid4=new int[n][m];
+			for(int i=0; i<n; i++)
+			{
+				grid1[i]=scn.next().toCharArray();
+			}
+			for(int i=0; i<n; i++)
+			{
+				grid2[i]=scn.next().toCharArray();
+			}
+			for(int i=0; i<n; i++)
+			{
+				for(int j=0; j<m; j++)
+				{
+					char x=grid1[i][j];
+					int val=(int)x;
+					val=val-48;
+					grid3[i][j]=val;
+				}
+			}
+			for(int i=0; i<n; i++)
+			{
+				for(int j=0; j<m; j++)
+				{
+					char x=grid2[i][j];
+					int val=(int)x;
+					val=val-48;
+					grid4[i][j]=val;
+				}
+			}
+		/*	for(int i=0; i<n; i++)
+			{
+				for(int j=0; j<m; j++)
+				{
+					System.out.print(grid3[i][j]);
+				}
+				System.out.println();
+			}
+			System.out.println();
+			for(int i=0; i<n; i++)
+			{
+				for(int j=0; j<m; j++)
+				{
+					System.out.print(grid4[i][j]);
+				}
+				System.out.println();
+			}*/
+			int min=Integer.MAX_VALUE;
+			for(int dr=-25; dr<=25; dr++)
+			{
+				for(int dc=-25; dc<=25; dc++)
+				{
+					int flips=0;
+					for(int i=0; i<n; i++)
+					{
+						for(int j=0; j<m; j++)
+						{
+							
+							
+								int newi=i+dr;
+								int newj=j+dc;
+								if(newi>=0 && newi<n && newj>=0 && newj<m)
+								{
+								//	System.out.println("Entry"+i+" "+j);
+									if(grid3[i][j]!=grid4[newi][newj])
+									{
+									//	System.out.println(i+" "+j);
+										flips++;
+									}
+								}
+								else
+								{
+									int newvalue=0;
+									if(grid3[i][j]!=newvalue)
+									{
+										flips++;
+									}
+								}
+							
+						}
+					}
+					min=Math.min(min, flips);
+				}
+			}
+			out.println(min);
+			
+		}
+		out.close();
+
+	}
+
+	public static double polygonArea(double X[], double Y[], int n) {
+		// Initialize area
+		double area = 0.0;
+
+		// Calculate value of shoe-lace formula
+		int j = n - 1;
+		for (int i = 0; i < n; i++) {
+			area += (X[j] + X[i]) * (Y[j] - Y[i]);
+
+			// j is previous vertex to i
+			j = i;
+		}
+
+		// Return absolute value
+		return Math.abs(area / 2.0);
+	}
+
+	static class FastReader {
+		BufferedReader br;
+		StringTokenizer st;
+
+		public FastReader() {
+			br = new BufferedReader(new InputStreamReader(System.in));
+		}
+
+		String next() {
+			while (st == null || !st.hasMoreElements()) {
+				try {
+					st = new StringTokenizer(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return st.nextToken();
+		}
+
+		int nextInt() {
+			return Integer.parseInt(next());
+		}
+
+		long nextLong() {
+			return Long.parseLong(next());
+		}
+
+		double nextDouble() {
+			return Double.parseDouble(next());
+		}
+
+		String nextLine() {
+			String str = "";
+			try {
+				str = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return str;
+		}
+	}
+
+}
        
        
        for ( Character key : map.keySet()){
