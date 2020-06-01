@@ -3,3 +3,74 @@ Your algorithms have become so good at predicting the market that you now know w
 Each day, you can either buy one share of WOT, sell any number of shares of WOT that you own, or not make any transaction at all. What is the maximum profit you can obtain with an optimum trading strategy?
 
 For example, if you know that prices for the next two days are , you should buy one share day one, and sell it day two for a profit of . If they are instead , no profit can be made so you don't buy or sell stock those days.
+
+
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'stockmax' function below.
+     *
+     * The function is expected to return a LONG_INTEGER.
+     * The function accepts INTEGER_ARRAY prices as parameter.
+     */
+
+    public static long stockmax(List<Integer> prices) {
+     int maxi=prices.get(prices.size()-1);
+        long profit=0;
+        for(int i=prices.size()-2;i>=0;i--)
+        {
+            maxi=Math.max(maxi,prices.get(i));
+            if(maxi>prices.get(i))
+            {
+                profit=profit+(maxi-prices.get(i));
+            }
+        }
+        
+        return profit;
+
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int t = Integer.parseInt(bufferedReader.readLine().trim());
+
+        IntStream.range(0, t).forEach(tItr -> {
+            try {
+                int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+                List<Integer> prices = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+                    .map(Integer::parseInt)
+                    .collect(toList());
+
+                long result = Result.stockmax(prices);
+
+                bufferedWriter.write(String.valueOf(result));
+                bufferedWriter.newLine();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
